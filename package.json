@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node skatepark.js"
+    "start": "node skatepark.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -20,14 +22,13 @@
   "dependencies": {
     "cron": "^1.7.1",
     "dotenv": "^8.0.0",
-    "firebase": "^5.9.0",
+    "firebase": "^6.1.0",
     "geofirestore": "^3.3.1",
-    "image-to-base64": "^2.0.1",
+    "grpc": "^1.21.1",
     "jsonfile": "^5.0.0",
     "node": "^12.3.1",
     "node-fetch": "^2.6.0",
     "puppeteer": "^1.11.0",
-    "request": "^2.88.0",
-    "stable": "^0.1.8"
+    "image-to-base64": "^2.0.1"
   }
 }

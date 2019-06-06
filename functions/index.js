@@ -4,7 +4,7 @@ const fs = require("fs");
 const UUID = require("uuid-v4");
 
 const gcconfig = {
-  projectId: "mapsdd20-1786e",
+  projectId: "maps20-1786e",
   keyFilename: "maps20keys.json"
 };
 
@@ -20,7 +20,7 @@ exports.storeImage = functions.https.onRequest((request, response) => {
       console.log(err);
       return response.status(500).json({ error: err });
     });
-    const bucket = gcs.bucket("maps20-178dd6e.appspot.com");
+    const bucket = gcs.bucket("maps20-1786e.appspot.com");
     const uuid = UUID();
 
     bucket.upload(
@@ -62,7 +62,7 @@ exports.deleteImage = functions.database
     const placeData = snapshot.val();
     const imagePath = placeData.imagePath;
 
-    const bucket = gcs.bucket("maps20-17ddd86e.appspot.com");
+    const bucket = gcs.bucket("maps20-1786e.appspot.com");
     return bucket.file(imagePath).delete();
   });
 

@@ -4,10 +4,10 @@
 
 - [x] scrape website
 - [x] upload images to firebase storage
-- [ ] upload multiple images
+- [X] add ratings
+- [X] upload multiple images
+- [ ] make folder for park
 - [ ] resize image with firebase function
 - [ ] push all data to geostore
 
 # Error
-
-- node error with grpc ?
