@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const GeoFirestore = require("geofirestore").GeoFirestore;
 const firebase = require("firebase");
 const image2base64 = require("image-to-base64");
-const sharp = require('sharp');
+const sharp = require("sharp");
 
 require("dotenv").config();
 
@@ -60,15 +60,16 @@ async function initBrowser() {
       return links;
     });
 
-    const firebaseUrl = await getImages(images, title);
-    console.log(firebaseUrl);
+    if (stars >= 3) {
+      const firebaseUrl = await getImages(images, title);
+      const latlong = StringStrip(iframe);
+      const lat = latlong[0];
+      const long = latlong[1];
+      addItem(lat, long, title, firebaseUrl, stars, description);
 
-    const latlong = StringStrip(iframe);
-    const lat = latlong[0];
-    const long = latlong[1];
-    addItem(lat, long, title, firebaseUrl, stars, description);
+      await page.goBack();
+    }
 
-    await page.goBack();
     // Get the data ...
   }
 }

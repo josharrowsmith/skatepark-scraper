@@ -2,10 +2,9 @@ const functions = require("firebase-functions");
 const cors = require("cors")({ origin: true });
 const fs = require("fs");
 const UUID = require("uuid-v4");
-const spawn = require("child-process-promise").spawn;
 
 const gcconfig = {
-  projectId: "maps20-1786e",
+  projectId: "mapsdd20-1786e",
   keyFilename: "maps20keys.json"
 };
 
@@ -23,12 +22,15 @@ exports.storeImage = functions.https.onRequest((request, response) => {
     });
     const bucket = gcs.bucket("maps20-1786e.appspot.com");
     const uuid = UUID();
+    const name = body.name;
+
+
 
     bucket.upload(
       "/tmp/uploaded-image.jpg",
       {
         uploadType: "media",
-        destination: "/skatepark/" + uuid + ".jpg",
+        destination: `/skatepark/${name}/` + name + uuid + ".jpg",
         metadata: {
           metadata: {
             contentType: "image/jpeg",
@@ -46,7 +48,7 @@ exports.storeImage = functions.https.onRequest((request, response) => {
               encodeURIComponent(file.name) +
               "?alt=media&token=" +
               uuid,
-              imagePath: "/skatepark/" + uuid + ".jpg"
+              imagePath: `/skatepark/${name}/` + name + uuid + ".jpg"
           });
         } else {
           console.log(err);
@@ -55,43 +57,6 @@ exports.storeImage = functions.https.onRequest((request, response) => {
       }
     );
   });
-});
-
-//resize images 
-exports.onFileChange = functions.storage.object().onChange(event => {
-  const object = event.data;
-  const bucket = object.bucket;
-  const contentType = object.contentType;
-  const filePath = object.name;
-  console.log("File change detected, function execution started");
-
-  if (object.resourceState === "not_exists") {
-    console.log("We deleted a file, exit...");
-    return;
-  }
-
-  if (path.basename(filePath).startsWith("resized-")) {
-    console.log("We already renamed that file!");
-    return;
-  }
-
-  const destBucket = gcs.bucket(bucket);
-  const tmpFilePath = path.join(os.tmpdir(), path.basename(filePath));
-  const metadata = { contentType: contentType };
-  return destBucket
-    .file(filePath)
-    .download({
-      destination: tmpFilePath
-    })
-    .then(() => {
-      return spawn("convert", [tmpFilePath, "-resize", "500x500", tmpFilePath]);
-    })
-    .then(() => {
-      return destBucket.upload(tmpFilePath, {
-        destination: "resized-" + path.basename(filePath),
-        metadata: metadata
-      });
-    });
 });
 
 exports.deleteImage = functions.database
