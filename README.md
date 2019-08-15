@@ -8,6 +8,7 @@
 - [X] upload multiple images
 - [ ] make folder for park
 - [ ] resize image with firebase function
-- [ ] push all data to geostore
+- [X] push all data to geostore
 
 # Error
+- node issues 
