@@ -60,17 +60,14 @@ async function initBrowser() {
       return links;
     });
 
-    if (stars >= 3) {
-      const firebaseUrl = await getImages(images, title);
-      const latlong = StringStrip(iframe);
-      const lat = latlong[0];
-      const long = latlong[1];
-      addItem(lat, long, title, firebaseUrl, stars, description);
 
-      await page.goBack();
-    }
+    const firebaseUrl = await getImages(images, title);
+    const latlong = StringStrip(iframe);
+    const lat = latlong[0];
+    const long = latlong[1];
+    addItem(lat, long, title, firebaseUrl, description);
 
-    // Get the data ...
+    await page.goBack();
   }
 }
 
@@ -85,7 +82,7 @@ async function getImages(images, title) {
   const firebaseUrl = [];
   for (let y = 0; y < waitResolve.length; y++) {
     const response = await fetch(
-      "https://us-central1-maps20-1786e.cloudfunctions.net/storeImage",
+      "https://us-central1-skateparks-89327.cloudfunctions.net/storeImage",
       {
         method: "POST",
         body: JSON.stringify({
@@ -98,22 +95,20 @@ async function getImages(images, title) {
     const imageurl = await data.imageUrl;
     firebaseUrl.push(await imageurl);
   }
-  console.log(firebaseUrl);
+
   return Promise.all(firebaseUrl);
 }
 
 // This will add items to geostore
-function addItem(lat, long, title, imageurl, stars, description) {
+function addItem(lat, long, title, images, description) {
   const lats = parseFloat(lat);
   const lng = parseFloat(long);
   const doc = {
     name: title,
-    image: imageurl,
-    rating: stars,
+    images: images,
     description,
     coordinates: new firebase.firestore.GeoPoint(lats, lng)
   };
-  console.log(doc);
   const geofirestore = new GeoFirestore(firebase.firestore());
   const geocollection = geofirestore.collection("skateparks");
   geocollection.add(doc).then(async docRef => {
@@ -129,6 +124,36 @@ function StringStrip(iframe) {
   return final;
 }
 
+
+function searchDb() {
+
+  const lat = -27.650727;
+  const lng = 153.136051;
+
+  // Center
+  const centerLat = -27.6506467;
+  const centerLng = 153.1579264;
+
+  const radius = 25;
+
+  const firestore = firebase.firestore();
+  const geofirestore = new GeoFirestore(firestore);
+  const geocollection = geofirestore.collection('skateparks');
+
+  geocollection.limit(50).near({
+    center: new firebase.firestore.GeoPoint(centerLat, centerLng),
+    radius: radius
+  }).get().then((querySnapshot) => {
+
+    let users = [];
+    for (let i = 0; i < querySnapshot.docs.length; i++) {
+      let { doc } = querySnapshot.docChanges()[i];
+      let user = querySnapshot.docs[i].data()
+      users.push(user)
+    }
+    console.log(users.name)
+  })
+}
 // Main ahha
 async function runAllTheThings() {
   await initBrowser();

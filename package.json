@@ -20,17 +20,22 @@
   },
   "homepage": "https://github.com/josharrowsmith/skatepark-scraper#readme",
   "dependencies": {
+    "algoliasearch": "^4.0.3",
+    "child-process-promise": "^2.2.1",
     "cron": "^1.7.1",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.2.0",
     "firebase": "^6.1.0",
+    "firebase-admin": "^8.9.2",
+    "firebase-functions": "^3.3.0",
     "fs-extra": "^8.1.0",
     "geofirestore": "^3.3.1",
     "grpc": "^1.21.1",
     "image-to-base64": "^2.0.1",
     "jsonfile": "^5.0.0",
+    "mkdirp-promise": "^5.0.1",
     "node": "^10.16.2",
     "node-fetch": "^2.6.0",
     "puppeteer": "^1.11.0",
-    "sharp": "^0.23.0"
+    "sharp": "^0.23.4"
   }
 }
