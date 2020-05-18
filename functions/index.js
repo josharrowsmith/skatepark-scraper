@@ -6,7 +6,8 @@ const gcs = new Storage.Storage();
 
 module.exports = {
   ...require("./storeImage"),
-  ...require("./deleteImage"),
-  ...require("./image-crop"),
-  ...require("./search")
+  // ...require("./deleteImage"),
+  ...require("./nofications")
+  // ...require("./image-crop"),
+  // ...require("./search")
 };

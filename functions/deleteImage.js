@@ -10,6 +10,6 @@ exports.deleteImage = functions.database
         const placeData = snapshot.val();
         const imagePath = placeData.imagePath;
 
-        const bucket = gcs.bucket("skateparks");
+        const bucket = gcs.bucket("bucket");
         return bucket.file(imagePath).delete();
     });

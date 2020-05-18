@@ -10,6 +10,11 @@
 - [X] resize image with firebase function
 - [X] push all data to geostore
 - [X] algolia search indexing
+- [X] daily nofications or hourly 
+- [ ] favorites skatepark
+- [ ] rating system 
+- [ ] notification maybe 
+- [ ] skatepark count (unsure how costly it will be)
 
 # Error
 - node issues 

@@ -14,7 +14,7 @@ exports.storeImage = functions.https.onRequest((request, response) => {
         console.log(err);
         return response.status(500).json({ error: err });
       });
-      const bucket = gcs.bucket("skateparks");
+      const bucket = gcs.bucket("bucket");
       const uuid = UUID();
       const name = body.name;
   

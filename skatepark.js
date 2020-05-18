@@ -82,7 +82,7 @@ async function getImages(images, title) {
   const firebaseUrl = [];
   for (let y = 0; y < waitResolve.length; y++) {
     const response = await fetch(
-      "https://us-central1-skateparks-89327.cloudfunctions.net/storeImage",
+      "https://www.google.com",
       {
         method: "POST",
         body: JSON.stringify({
@@ -126,13 +126,6 @@ function StringStrip(iframe) {
 
 
 function searchDb() {
-
-  const lat = -27.650727;
-  const lng = 153.136051;
-
-  // Center
-  const centerLat = -27.6506467;
-  const centerLng = 153.1579264;
 
   const radius = 25;
 
