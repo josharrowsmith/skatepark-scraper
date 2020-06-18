@@ -1,0 +1,36 @@
+{
+  "name": "skatepark-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node skatepark.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josharrowsmith/skatepark-scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josharrowsmith/skatepark-scraper/issues"
+  },
+  "homepage": "https://github.com/josharrowsmith/skatepark-scraper#readme",
+  "dependencies": {
+    "cron": "^1.7.1",
+    "dotenv": "^8.0.0",
+    "firebase": "^6.1.0",
+    "fs-extra": "^8.1.0",
+    "geofirestore": "^3.3.1",
+    "grpc": "^1.21.1",
+    "image-to-base64": "^2.0.1",
+    "jsonfile": "^5.0.0",
+    "node": "^10.16.2",
+    "node-fetch": "^2.6.0",
+    "puppeteer": "^1.11.0",
+    "sharp": "^0.23.0"
+  }
+}
