@@ -7,16 +7,6 @@ const image2base64 = require("image-to-base64");
 const sharp = require('sharp');
 
 require("dotenv").config();
-
-var config = {
-  apiKey: "AIzaSyAzxUEyYEP5Vf7a3SzzHQe-nLRdYmupmQk",
-  authDomain: "maps20-1786e.firebaseapp.com",
-  databaseURL: "https://maps20-1786e.firebaseio.com",
-  projectId: "maps20-1786e",
-  storageBucket: "maps20-1786e.appspot.com",
-  messagingSenderId: "919507578810"
-};
-
 firebase.initializeApp(config);
 
 const fs = require("fs");
@@ -67,13 +57,8 @@ async function initBrowser() {
     const latlong = StringStrip(iframe);
     const lat = latlong[0];
     const long = latlong[1];
-<<<<<<< HEAD
-    addItem(lat, long, title, firebaseUrl, stars, description);
-
-=======
     console.log("got here")
     addItem(lat, long, title, firebaseUrl, description, rating);
->>>>>>> b179751... CustomUserClaims
     await page.goBack();
     // Get the data ...
   }
@@ -108,11 +93,7 @@ async function getImages(images, title) {
 }
 
 // This will add items to geostore
-<<<<<<< HEAD
-function addItem(lat, long, title, imageurl, stars, description) {
-=======
 function addItem(lat, long, title, images, description, rating) {
->>>>>>> b179751... CustomUserClaims
   const lats = parseFloat(lat);
   const lng = parseFloat(long);
   const doc = {
@@ -139,17 +120,9 @@ function StringStrip(iframe) {
   return final;
 }
 
-<<<<<<< HEAD
-=======
 
 function searchDb() {
 
-  const lat = -27.650727;
-  const lng = 153.136051;
-
-  // Center
-  const centerLat = -27.6506467;
-  const centerLng = 153.1579264;
 
   const radius = 25;
 
@@ -171,7 +144,6 @@ function searchDb() {
     console.log(users.name)
   })
 }
->>>>>>> b179751... CustomUserClaims
 // Main ahha
 async function runAllTheThings() {
   await initBrowser();
