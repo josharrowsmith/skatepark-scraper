@@ -8,12 +8,9 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
-<<<<<<< HEAD
-=======
   "engines": {
     "node": "10"
   },
->>>>>>> b179751... CustomUserClaims
   "dependencies": {
     "@google-cloud/storage": "^1.7.0",
     "child-process-promise": "^2.2.1",
