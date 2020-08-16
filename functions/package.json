@@ -8,19 +8,16 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
-<<<<<<< HEAD
-=======
   "engines": {
     "node": "10"
   },
->>>>>>> b179751... CustomUserClaims
   "dependencies": {
-    "@google-cloud/storage": "^1.7.0",
+    "algoliasearch": "^4.4.0",
     "child-process-promise": "^2.2.1",
     "cors": "^2.8.4",
-    "firebase-admin": "~5.4.2",
-    "firebase-functions": "^2.2.0",
-    "node": "^12.8.0",
+    "firebase-admin": "^8.13.0",
+    "firebase-functions": "^3.7.0",
+    "fs-extra": "^8.1.0",
     "uuid-v4": "^0.1.0"
   },
   "private": true
