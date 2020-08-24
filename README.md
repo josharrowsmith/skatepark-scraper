@@ -6,8 +6,8 @@
 - [x] upload images to firebase storage
 - [X] add ratings
 - [X] upload multiple images
-- [ ] make folder for park
-- [ ] resize image with firebase function
+- [X] make folder for park
+- [X] resize image with firebase function
 - [X] push all data to geostore
 
 # Error

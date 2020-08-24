@@ -9,7 +9,7 @@ exports.deleteImage = functions.firestore.document('skateparks/{skateparkId}')
         // const imagePath = parkName.d.name;
         const id = snapshot.id;
         
-        const bucket = gcs.bucket("skatepark-beta.appspot.com");
+        const bucket = gcs.bucket("");
         return bucket.deleteFiles({
             prefix: `skatepark/${id}`
         });
